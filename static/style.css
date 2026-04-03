@@ -1,0 +1,123 @@
+/* BACKGROUND IMAGE */
+.bg-image {
+    margin: 0;
+    font-family: Arial;
+    background: url('https://images.unsplash.com/photo-1552664730-d307ca884978') no-repeat center center/cover;
+    height: 100vh;
+}
+
+/* DARK OVERLAY */
+.bg-image::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0,0,0,0.6);
+    z-index: -1;
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 40px;
+    background: rgba(0,0,0,0.6);
+    color: white;
+}
+
+.navbar a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.active {
+    background: #1e90ff;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+/* GLASS CARD */
+.glass-container {
+    width: 350px;
+    margin: 80px auto;
+    padding: 30px;
+
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border-radius: 15px;
+
+    color: white;
+    text-align: center;
+}
+
+/* INPUTS */
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: none;
+}
+
+/* BUTTON */
+button {
+    width: 100%;
+    padding: 12px;
+    background: #1e90ff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+/* RESULT */
+.result {
+    margin-top: 15px;
+    font-size: 18px;
+}
+/* HERO SECTION */
+.hero {
+    text-align: center;
+    padding: 120px;
+    background: linear-gradient(to right, #0b1f3a, #1e3c72);
+    color: white;
+}
+
+.hero h1 {
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+/* BUTTON */
+.btn {
+    padding: 12px 25px;
+    background: #1e90ff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+/* STATS */
+.stats {
+    display: flex;
+    justify-content: space-around;
+    padding: 40px;
+    background: #08162b;
+    color: white;
+}
+
+.stats div {
+    text-align: center;
+    font-size: 30px;
+}
+
+.stats span {
+    font-size: 14px;
+}
