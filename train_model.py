@@ -1,23 +1,48 @@
 import pandas as pd
+from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score
 import joblib
 
-data = {
-    'Age': [25, 30, 35, 40, 28, 50],
-    'MonthlyIncome': [3000, 4000, 5000, 6000, 3500, 8000],
-    'JobSatisfaction': [1, 2, 3, 4, 2, 3],
-    'YearsAtCompany': [1, 3, 5, 10, 2, 15],
-    'OverTime': [0, 1, 0, 1, 0, 1],
-    'Attrition': [1, 0, 0, 0, 1, 0]
-}
+# Load Kaggle dataset
 
-df = pd.DataFrame(data)
+df = pd.read_csv("WA_Fn-UseC_-HR-Employee-Attrition.csv")
 
-X = df.drop('Attrition', axis=1)
+# Convert target column (Yes/No → 1/0)
+
+df['Attrition'] = df['Attrition'].map({'Yes': 1, 'No': 0})
+
+# Convert OverTime column
+
+df['OverTime'] = df['OverTime'].map({'Yes': 1, 'No': 0})
+
+# Select important features
+
+features = ['Age', 'MonthlyIncome', 'JobSatisfaction', 'YearsAtCompany', 'OverTime']
+
+X = df[features]
 y = df['Attrition']
 
-model = RandomForestClassifier()
-model.fit(X, y)
+# Split dataset
 
-joblib.dump(model, 'model.pkl')
-print("Model Ready ✅")
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Train model
+
+model = RandomForestClassifier()
+model.fit(X_train, y_train)
+
+# Predictions
+
+y_pred = model.predict(X_test)
+
+# Accuracy
+
+accuracy = accuracy_score(y_test, y_pred)
+print("Model Accuracy:", accuracy)
+
+# Save model
+
+joblib.dump(model, "model.pkl")
+
+print("Model trained and saved successfully ✅")
